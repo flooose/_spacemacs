@@ -23,6 +23,10 @@
 ;; predictable behaviour for guests
 (delete-selection-mode 1)
 
+;; load enabled scripts
+(dolist (item (nthcdr 2 (directory-files "~/.emacs.d/private/scripts-enabled/" t)))
+  (load-file item))
+
 ;; KEYBINDINGS
 
 ;; make working with strings easier
