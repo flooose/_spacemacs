@@ -27,6 +27,7 @@ values."
      ;; better-defaults
      emacs-lisp
      git
+     ess
      ;; markdown
      org
      ;; (shell :variables
