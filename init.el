@@ -34,6 +34,16 @@
 
 ;; KEYBINDINGS
 
+;; setup personal-keybindings
+(setq flooose-navigation-keymap (make-sparse-keymap))
+
+;; define keys bindings for above personal map
+(define-key flooose-navigation-keymap "a" 'back-to-indentation)
+
+;; bind above personal map to "C-c n"
+(global-set-key (kbd "C-c n") flooose-navigation-keymap)
+
+
 ;; make working with strings easier
 (global-set-key (kbd "C-=") 'er/expand-region)
 
