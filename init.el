@@ -15,6 +15,11 @@
 (setq auto-save-file-name-transforms
 			`((".*" ,temporary-file-directory t)))
 
+;;
+;; ccrypt integration
+;;
+(require 'ps-ccrypt "~/.emacs.d/private/modes/ps-ccrypt.el")
+
 ;; numbers and stuff
 (global-linum-mode t)
 (setq line-number-mode t)
