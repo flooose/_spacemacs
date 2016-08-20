@@ -256,5 +256,4 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; no vim mode in ansi-term
   (evil-set-initial-state 'term-mode 'emacs)
-  (load-theme 'spacemacs-light)
   (load-file "~/.emacs.d/private/init.el"))

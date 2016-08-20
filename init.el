@@ -1,3 +1,9 @@
+;; keep customizations in own file
+(setq custom-file "~/.emacs.d/private/emacs-custom.el")
+(load custom-file)
+
+(load-theme 'spacemacs-light)
+
 ;; what time is it?
 (display-time-mode 1)
 
@@ -90,7 +96,3 @@
   (previous-line))
 (global-set-key (kbd "C-S-<return>") 'flooose-open-line-above)
 (global-set-key (kbd "C-S-o") 'flooose-open-line-above)
-
-;; keep customizations in own file
-(setq custom-file "~/.emacs.d/private/emacs-custom.el")
-(load custom-file)
