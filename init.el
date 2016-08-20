@@ -45,15 +45,21 @@
 
 ;; KEYBINDINGS
 
-;; setup personal-keybindings
+;; Yank keymap
+(setq flooose-yank-keymap (make-sparse-keymap))
+(define-key flooose-yank-keymap "l" (lambda () (interactive)
+                                      (save-excursion
+                                        (back-to-indentation)
+                                        (set-mark-command nil)
+                                        (move-end-of-line nil)
+                                        (kill-ring-save 'doesnt-matter-because 'of-next-argument t)
+                                        )))
+(global-set-key (kbd "C-c w") flooose-yank-keymap)
+
+;; Navigation keymap
 (setq flooose-navigation-keymap (make-sparse-keymap))
-
-;; define keys bindings for above personal map
-(define-key flooose-navigation-keymap "a" 'back-to-indentation)
-
-;; bind above personal map to "C-c n"
 (global-set-key (kbd "C-c n") flooose-navigation-keymap)
-
+(define-key flooose-navigation-keymap "a" 'back-to-indentation)
 
 ;; make working with strings easier
 (global-set-key (kbd "C-=") 'er/expand-region)
