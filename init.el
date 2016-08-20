@@ -15,6 +15,17 @@
 (setq auto-save-file-name-transforms
 			`((".*" ,temporary-file-directory t)))
 
+;; delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; setup ess for R
+(require 'poly-R)
+(require 'poly-markdown)
+(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+
+;; ace-window
+(global-set-key (kbd "C-x o") 'ace-window)
+
 ;;
 ;; ccrypt integration
 ;;
