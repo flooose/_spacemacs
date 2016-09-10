@@ -29,6 +29,7 @@ values."
      common-lisp
      git
      ess
+     yaml
      ;; markdown
      org
      ;; (shell :variables
