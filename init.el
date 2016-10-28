@@ -21,6 +21,9 @@
 (setq auto-save-file-name-transforms
 			`((".*" ,temporary-file-directory t)))
 
+;; See https://github.com/syl20bnr/spacemacs/issues/2667 for why this is necessary
+(setq global-auto-revert-non-file-buffers nil)
+
 ;; delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
