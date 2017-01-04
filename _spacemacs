@@ -46,7 +46,9 @@ values."
    dotspacemacs-additional-packages '(markdown-mode
                                       polymode
                                       ace-window
-                                      scss-mode)
+                                      scss-mode
+                                      tide
+                                      web-mode)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(clean-aindent-mode)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that

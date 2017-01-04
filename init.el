@@ -99,3 +99,57 @@
   (previous-line))
 (global-set-key (kbd "C-S-<return>") 'flooose-open-line-above)
 (global-set-key (kbd "C-S-o") 'flooose-open-line-above)
+
+;; javascript
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
+(setq flymake-jslint-command "eslint")
+(add-hook 'js2-mode-hook 'flymake-jslint-load)
+(add-hook 'web-mode-hook
+          (lambda ()
+            (if (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
+                (flymake-jslint-load))))
+
+;; typescript
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;; format options
+(setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (progn
+                (web-mode-set-content-type "tsx")
+                (setup-tide-mode)))))
+
+(setq web-mode-content-types-alist
+      '(("jsx" . "\\.js[x]?\\'")
+        ("jsx" . "\\.ts[x]?\\'")))
+
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "jsx" (file-name-extension buffer-file-name))
+              (web-mode-set-content-type "jsx"))))
+
+(setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
