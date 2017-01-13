@@ -2,6 +2,9 @@
 (setq custom-file "~/.emacs.d/private/emacs-custom.el")
 (load custom-file)
 
+;; global font size
+(set-face-attribute 'default (selected-frame) :height 120)
+
 (load-theme 'spacemacs-light)
 
 ;; what time is it?
@@ -34,6 +37,9 @@
 
 ;; ace-window
 (global-set-key (kbd "C-x o") 'ace-window)
+
+
+(global-set-key (kbd "C-x r e") 'er/expand-region)
 
 ;;
 ;; ccrypt integration
