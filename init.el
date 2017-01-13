@@ -109,7 +109,7 @@
             (if (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
                 (flymake-jslint-load))))
 
-;; typescript
+;; tide typescript ide
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
@@ -153,3 +153,4 @@
               (web-mode-set-content-type "jsx"))))
 
 (setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
+              (setup-tide-mode))))

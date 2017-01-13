@@ -28,8 +28,11 @@ values."
      emacs-lisp
      ess
      git
+     html
+     javascript
      markdown
      org
+     typescript
      yaml
      ;; (shell :variables
      ;;        shell-default-height 30
