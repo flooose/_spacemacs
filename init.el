@@ -164,5 +164,6 @@
             (when (string-equal "jsx" (file-name-extension buffer-file-name))
               (web-mode-set-content-type "jsx"))))
 
+
 (setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
               (setup-tide-mode))
