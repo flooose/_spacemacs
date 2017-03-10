@@ -115,6 +115,12 @@
             (if (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
                 (flymake-jslint-load))))
 
+;; We always want to indent 2
+(setq typescript-indent-level 2)
+(setq js2-basic-offset 2)
+(setq js-indent-level 2)
+(setq js3-indent-level 2)
+
 ;; tide typescript ide
 (defun setup-tide-mode ()
   (interactive)
@@ -159,4 +165,4 @@
               (web-mode-set-content-type "jsx"))))
 
 (setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
-              (setup-tide-mode))))
+              (setup-tide-mode))
