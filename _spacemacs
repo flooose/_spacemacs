@@ -60,7 +60,8 @@ values."
                                       scss-mode
                                       tide
                                       wanderlust
-                                      web-mode)
+                                      web-mode
+                                      wrap-region)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(clean-aindent-mode)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that

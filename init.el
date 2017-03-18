@@ -164,6 +164,7 @@
         ("jsx" . "\\.ts[x]?\\'")))
 (add-hook 'web-mode-hook
           (lambda ()
+            (tern-mode t)
             (if (string-equal "jsx" (file-name-extension buffer-file-name))
               (web-mode-set-content-type "jsx"))))
 
