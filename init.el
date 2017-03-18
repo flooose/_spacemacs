@@ -145,7 +145,29 @@
 ;; format options
 (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
 
+;; web-mode
 (require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+;; see http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html for help
+(setq flycheck-global-modes '(web-mode js2-mode javascript))
+(require 'flycheck) ;; This shouldn't need to be required, but somehow, without
+                    ;; this flycheck doesn't work
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+(global-flycheck-mode)
+
+(setq web-mode-content-types-alist
+      '(("jsx" . "\\.js[x]?\\'")
+        ("jsx" . "\\.ts[x]?\\'")))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (if (string-equal "jsx" (file-name-extension buffer-file-name))
+              (web-mode-set-content-type "jsx"))))
+
+; tsx
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-hook 'web-mode-hook
           (lambda ()
@@ -154,16 +176,5 @@
                 (web-mode-set-content-type "tsx")
                 (setup-tide-mode)))))
 
-(setq web-mode-content-types-alist
-      '(("jsx" . "\\.js[x]?\\'")
-        ("jsx" . "\\.ts[x]?\\'")))
-
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-(add-hook 'web-mode-hook
-          (lambda ()
-            (when (string-equal "jsx" (file-name-extension buffer-file-name))
-              (web-mode-set-content-type "jsx"))))
-
-
 (setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
-              (setup-tide-mode))
+      (setup-tide-mode))
