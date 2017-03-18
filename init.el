@@ -176,5 +176,24 @@
                 (web-mode-set-content-type "tsx")
                 (setup-tide-mode)))))
 
+;;
+(setq flooose-duplicates-map (make-sparse-keymap))
+(define-key flooose-duplicates-map "d" 'repeatably-duplicate-line)
+(defun repeatably-duplicate-line ()
+  (interactive)
+  (duplicate-line)
+  (message "press d to duplicate again!")(set-transient-map flooose-duplicates-map))
+
+(defun duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+  )
+(global-set-key (kbd "C-c d") 'repeatably-duplicate-line)
+
 (setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
       (setup-tide-mode))
