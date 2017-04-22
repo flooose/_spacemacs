@@ -198,3 +198,13 @@
 
 (setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
       (setup-tide-mode))
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/share/msbuild"))
+(setq omnisharp-server-executable-path "/opt/omnisharp-roslyn/OmniSharp.exe")
+(add-hook 'omnisharp-mode-hook (lambda ()
+                                 (interactive)
+                                 (setq omnisharp-server-executable-path "/opt/omnisharp-roslyn/OmniSharp.exe")
+                                 (if (equal nil omnisharp--server-info)
+                                     (omnisharp-start-omnisharp-server default-directory))
+                                 (flycheck-mode)
+                                 ))
