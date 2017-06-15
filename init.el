@@ -196,6 +196,41 @@
   )
 (global-set-key (kbd "C-c d") 'repeatably-duplicate-line)
 
+(setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules"))
+
+(global-company-mode t)
+(require 'eclim)
+(setq eclimd-autostart t)
+
+(add-hook 'java-mode-hook (lambda ()
+                            (gradle-mode t)
+                            (global-eclim-mode)
+                            (custom-set-variables
+                             '(eclim-eclipse-dirs '("~/.eclipse/"))
+                             '(eclim-executable "~/.eclipse/org.eclipse.platform_4.6.3_155965261_linux_gtk_x86_64/eclim"))
+                            (company-emacs-eclim)
+                            (setq help-at-pt-display-when-idle t)
+                            (setq help-at-pt-timer-delay 0.1)
+                            (help-at-pt-set-timer)
+                            (company-emacs-eclim-setup)
+                            (setq company-emacs-eclim-ignore-case t)
+                            ))
+
+(add-hook 'kotlin-mode-hook (lambda ()
+                            (gradle-mode t)
+                            (global-eclim-mode)
+                            (custom-set-variables
+                             '(eclim-eclipse-dirs '("~/.eclipse/"))
+                             '(eclim-executable "~/.eclipse/org.eclipse.platform_4.6.3_155965261_linux_gtk_x86_64/eclim"))
+                            (company-emacs-eclim)
+                            (setq help-at-pt-display-when-idle t)
+                            (setq help-at-pt-timer-delay 0.1)
+                            (help-at-pt-set-timer)
+                            (company-emacs-eclim-setup)
+                            (setq company-emacs-eclim-ignore-case t)
+                            ))
+
+
 (setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
       (setup-tide-mode))
 
