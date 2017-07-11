@@ -196,7 +196,7 @@
   )
 (global-set-key (kbd "C-c d") 'repeatably-duplicate-line)
 
-(setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules"))
+(setq projectile-globally-ignored-directories (add-to-list 'projectile-globally-ignored-directories "node_modules"))
 
 (global-company-mode t)
 (require 'eclim)
