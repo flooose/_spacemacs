@@ -60,6 +60,7 @@ values."
                                       haskell-mode
                                       kotlin-mode
                                       markdown-mode
+                                      multiple-cursors
                                       polymode
                                       restclient
                                       scss-mode
