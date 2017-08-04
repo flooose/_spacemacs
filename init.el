@@ -1,3 +1,9 @@
+(add-hook 'web-mode-hook
+          (lambda ()
+            (setq web-mode-code-indent-offset 2)
+            (if (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
+                (flymake-jslint-load))))
+
 ;; keep customizations in own file
 (setq custom-file "~/.emacs.d/private/emacs-custom.el")
 (load custom-file)
@@ -112,6 +118,7 @@
 (add-hook 'js2-mode-hook 'flymake-jslint-load)
 (add-hook 'web-mode-hook
           (lambda ()
+            (setq web-mode-code-indent-offset 2)
             (if (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
                 (flymake-jslint-load))))
 
