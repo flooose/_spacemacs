@@ -183,9 +183,10 @@
 (defun repeatably-duplicate-line ()
   (interactive)
   (duplicate-line)
-  (message "press d to duplicate again!")(set-transient-map flooose-duplicates-map))
+  (message "press d to duplicate again!")
+  (set-transient-map flooose-duplicates-map))
 
-(defun duplicate-line()
+(defun duplicate-line ()
   (interactive)
   (move-beginning-of-line 1)
   (kill-line)
@@ -195,8 +196,6 @@
   (yank)
   )
 (global-set-key (kbd "C-c d") 'repeatably-duplicate-line)
-
-(setq projectile-globally-ignored-directories (add-to-list 'projectile-globally-ignored-directories "node_modules"))
 
 (global-company-mode t)
 (require 'eclim)
@@ -231,8 +230,7 @@
                             ))
 
 
-(setq projectile-globally-ignored-directories (append projectile-globally-ignored-directories "node_modules")
-      (setup-tide-mode))
+(setq projectile-globally-ignored-directories (add-to-list 'projectile-globally-ignored-directories "node_modules"))
 
 (setenv "PATH" (concat (getenv "PATH") ":/usr/share/msbuild"))
 (setq omnisharp-server-executable-path "/opt/omnisharp-roslyn/OmniSharp.exe")
