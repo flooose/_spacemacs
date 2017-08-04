@@ -53,7 +53,9 @@
 (require 'ps-ccrypt "~/.emacs.d/private/modes/ps-ccrypt.el")
 
 ;; numbers and stuff
-(global-linum-mode t)
+(setq-default dotspacemacs-line-numbers '(:relative t ))
+(with-eval-after-load 'linum
+  (linum-relative-toggle))
 (setq line-number-mode t)
 (setq column-number-mode t)
 
