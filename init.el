@@ -16,8 +16,9 @@
 ;; what time is it?
 (display-time-mode 1)
 
-;; we don't always want to do this manually
-(toggle-frame-maximized)
+;; We always want to maximize the frame. Taken from core-spacemacs.el
+(unless (frame-parameter nil 'fullscreen)
+  (toggle-frame-maximized))
 
 ;; cursor to bar
 (setq-default cursor-type 'bar)
