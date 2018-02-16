@@ -11,7 +11,8 @@
 ;; global font size
 (set-face-attribute 'default (selected-frame) :height 120)
 
-(load-theme 'spacemacs-light)
+(disable-theme 'spacemacs-dark)
+(load-theme 'gruvbox-light-medium)
 
 ;; what time is it?
 (display-time-mode 1)
