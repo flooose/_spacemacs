@@ -1,9 +1,3 @@
-(add-hook 'web-mode-hook
-          (lambda ()
-            (setq web-mode-code-indent-offset 2)
-            (if (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
-                (flymake-jslint-load))))
-
 ;; keep customizations in own file
 (setq custom-file "~/.emacs.d/private/emacs-custom.el")
 (load custom-file)
@@ -118,13 +112,9 @@
 
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
-(setq flymake-jslint-command "eslint")
-(add-hook 'js2-mode-hook 'flymake-jslint-load)
 (add-hook 'web-mode-hook
           (lambda ()
-            (setq web-mode-code-indent-offset 2)
-            (if (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
-                (flymake-jslint-load))))
+            (setq web-mode-code-indent-offset 2)))
 
 ;; We always want to indent 2
 (setq typescript-indent-level 2)
